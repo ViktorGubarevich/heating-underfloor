@@ -1,17 +1,29 @@
 .hero {
+  --width-slide: 590px;
+  --height-slide: 530px;
+  --width-block: calc(50% - 10px);
+  --gap: 10px;
   padding-top: 0;
+  overflow: hidden;
 }
 
 .hero__container {
+  position: relative;
   display: flex;
-  gap: 10px;
+  gap: var(--gap);
 }
 
 .hero__content {
+  width: var(--width-block);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex-basis: 50%;
+}
+
+.hero__slider-block {
+  position: absolute;
+  left: calc(var(--width-block) + var(--gap) / 2);
+  width: calc(((var(--width-block) + var(--gap)) * 2) - var(--gap));
 }
 
 .hero__title {
@@ -20,16 +32,14 @@
 
 .hero__description {
   flex-grow: 1;
+  text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 32px;
-  text-transform: uppercase;
-}
-
-.hero__slider-block {
-  flex-basis: 50%;
 }
 
 .hero__image {
+  width: var(--width-slide);
+  height: var(--height-slide);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -43,9 +53,11 @@
 .hero__arrow {
   position: absolute;
   bottom: 50px;
-  right: 50px;
+  left: calc(var(--width-slide) - 50px);
+  transform: translateX(-100%);
   display: flex;
   gap: 8px;
+  z-index: 3;
 }
 
 .hero__slider-btn {
@@ -53,7 +65,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: #ffc700 url("../image/arrow.svg") no-repeat center/12px;
+  background: #ffc700 url('../image/arrow.svg') no-repeat center/12px;
   border: 0;
   padding: 0;
   cursor: pointer;
