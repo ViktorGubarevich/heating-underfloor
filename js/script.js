@@ -8,5 +8,13 @@ new Swiper(".hero__slider", {
   },
   autoplay: {
     delay: 3000,
-  }
+  },
+  breakpoints: {
+    560: {
+      spaceBetween: 8,
+    },
+    320: {
+      slidesPerView: 1,
+    },
+  },
 });
