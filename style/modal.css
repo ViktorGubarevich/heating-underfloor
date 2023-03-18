@@ -49,6 +49,7 @@
 }
 
 .modal__fieldset {
+  display: flex;
   margin: 0 0 12px;
   padding: 0;
   border: 0;
@@ -86,4 +87,52 @@
   top: 10px;
   right: 10px;
   line-height: 0;
+}
+
+.modal__input-error {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+}
+
+@media (max-width: 920px) {
+  .modal__container::after {
+    flex: 0 0 192px;
+    background-image: url('../image/modal-bg-tablet.jpg');
+  }
+
+  .modal__content {
+    padding: 24px;
+  }
+
+  .modal__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .modal__subtitle {
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .modal__container {
+    flex-direction: column;
+  }
+
+  .modal__container::after {
+    flex: 0 0 308px;
+    background-image: url('../image/modal-bg-mobile.jpg');
+  }
+
+  .modal__content {
+    padding: 20px;
+  }
+
+  .modal__fieldset {
+    flex-direction: column;
+  }
+
 }

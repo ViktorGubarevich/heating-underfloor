@@ -28,6 +28,7 @@ const totalSquare = document.querySelector(".js-total-square");
 const totalPrice = document.querySelector(".js-total-price");
 const calcResultWrapper = document.querySelector(".calc__result-wrapper");
 const btnSubmit = document.querySelector(".js-submit");
+const calcOrder = document.querySelector(".calc__order");
 
 const tariff = {
   economy: 550,
@@ -46,8 +47,8 @@ calcForm.addEventListener("submit", (event) => {
     const square = calcForm.width.value * calcForm.length.value;
     const price = square * tariff[calcForm.tariff.value];
 
-    calcResultWrapper.style.display = "block";
-
+    calcResultWrapper.classList.add("calc__result-wrapper_show");
+    calcOrder.classList.add("calc__order_show");
     totalSquare.textContent = `${square} кв м`;
     totalPrice.textContent = `${price} руб`;
   }
@@ -126,3 +127,69 @@ modalController({
   btnOpen: ".js-order",
   btnClose: ".modal__close",
 });
+
+//input mask
+
+const phone = document.getElementById("phone");
+const imPhone = new Inputmask("+375(99)999-99-99");
+
+imPhone.mask(phone);
+
+//validation
+
+const validator = new JustValidate(".modal__form", {
+  errorLabelCssClass: "modal__input-error",
+  errorLabelStyle: { color: "#FFC700" },
+});
+
+validator
+  .addField("#name", [
+    {
+      rule: "required",
+      errorMessage: "Укажите Ваше имя",
+    },
+    {
+      rule: "minLength",
+      value: 3,
+      errorMessage: "Не менее 3-х символов",
+    },
+    {
+      rule: "maxLength",
+      value: 30,
+      errorMessage: "Не более 20-ти символов",
+    },
+  ])
+  .addField("#phone", [
+    {
+      rule: "required",
+      errorMessage: "Укажите Ваш телефон",
+    },
+    {
+      validator: (value) => {
+        const number = phone.inputmask.unmaskedvalue();
+        return number.length === 9;
+      },
+      errorMessage: "Не корректный телефон",
+    },
+  ])
+  .onSuccess((event) => {
+    const form = event.currentTarget;
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        name: form.name.value,
+        phone: form.phone.value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        form.reset();
+        alert(
+          `Спасибо, мы вам перезвоним. Ваша заявка под номером: ${data.id}`
+        );
+      });
+  });
