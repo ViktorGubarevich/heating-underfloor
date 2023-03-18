@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="style/advantages.css" />
     <link rel="stylesheet" href="style/calc.css" />
     <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="style/modal.css" />
 
     <link rel="stylesheet" href="style/swiper-bundle.min.css" />
     <script src="js/swiper-bundle.min.js"></script>
@@ -44,7 +45,7 @@
           width="162"
           height="39"
         />
-        <button class="header__button button button_o">Заказать</button>
+        <button class="header__button button button_o js-order">Заказать</button>
       </div>
     </header>
 
@@ -209,7 +210,11 @@
         />
         <ul class="footer__list footer__social list-reset">
           <li class="footer__item">
-            <a class="link footer__link" href="#">
+            <a
+              class="link footer__link"
+              href="#"
+              aria-label="Наш канал на youtube"
+            >
               <svg
                 width="25"
                 height="24"
@@ -226,7 +231,11 @@
           </li>
 
           <li class="footer__item">
-            <a class="link footer__link" href="#">
+            <a
+              class="link footer__link"
+              href="#"
+              aria-label="Наша группа в телеграм"
+            >
               <svg
                 width="24"
                 height="24"
@@ -319,5 +328,67 @@
         </ul>
       </div>
     </footer>
+
+    <div class="modal">
+      <div class="modal__main">
+        <div class="modal__container">
+          <div class="modal__content">
+            <h2 class="modal__title title">
+              Оставьте заявку и&nbsp;мы&nbsp;перезвоним
+            </h2>
+            <p class="modal__subtitle">
+              Наши мастера свяжутся с&nbsp;вами в&nbsp;течение 3 часов
+            </p>
+            <form class="modal__form">
+              <fieldset class="modal__fieldset">
+                <label class="modal__wrapper-input">
+                  <span class="modal__text">Имя</span>
+                  <input
+                    type="text"
+                    class="modal__input"
+                    name="name"
+                    id="name"
+                  />
+                </label>
+
+                <label class="modal__wrapper-input">
+                  <span class="modal__text">Телефон</span>
+                  <input
+                    type="tel"
+                    class="modal__input"
+                    name="phone"
+                    id="name"
+                  />
+                </label>
+              </fieldset>
+
+              <button class="button modal__submit" type="submit">
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>
+        <button class="button button_o modal__close">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 11L11 21"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21 21L11 11"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
