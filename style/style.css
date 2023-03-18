@@ -37,6 +37,11 @@ body {
 .link {
   text-decoration: none;
   color: inherit;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #ffd952;
 }
 
 .image {
@@ -52,6 +57,37 @@ body {
   color: #232020;
   text-transform: uppercase;
   background-color: #ffc700;
+  border: 1px solid #ffc700;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #ffd952;
+  border-color: #ffd952;
+}
+
+.button:focus-visible {
+  border-color: #9e7b00;
+}
+
+.button:active {
+  transform: translate(2px, 2px);
+}
+
+.button:disabled {
+  pointer-events: none;
+  background-color: #e0e0e0;
+  color: #898989;
+  border-color: #e0e0e0;
+}
+
+.button_o {
+  background-color: transparent;
+  border: 1px solid #232020;
+}
+
+.button_o:focus-visible {
+  border: 1px solid #ffc700;
 }
 
 .section-offset {
